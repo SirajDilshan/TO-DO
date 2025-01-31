@@ -18,5 +18,6 @@ public class ToDoEntity {
     private String title;
     @Column(nullable = false)
     private String description;
+
     private boolean complete;
 }

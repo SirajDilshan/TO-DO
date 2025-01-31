@@ -22,6 +22,7 @@ public class ToDoMapper {
     // Convert ToDoEntity to ToDoResponseDTO
     public ToDoResponseDTO toResponseDTO(ToDoEntity toDoEntity){
         ToDoResponseDTO toDoResponseDTO = new ToDoResponseDTO();
+        toDoResponseDTO.setId(toDoEntity.getId());
         toDoResponseDTO.setTitle(toDoEntity.getTitle());
         toDoResponseDTO.setDescription(toDoEntity.getDescription());
         toDoResponseDTO.setComplete(toDoEntity.isComplete());
