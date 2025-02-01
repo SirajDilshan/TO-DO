@@ -8,6 +8,8 @@ import SpringBoot.TO_DO.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ToDoServiceIMPL implements ToDoService {
     @Autowired
@@ -19,5 +21,11 @@ public class ToDoServiceIMPL implements ToDoService {
         ToDoEntity toDoEntity = toDoMapper.toEntity(toDoRequestDTO);
         ToDoEntity savedEntity= toDoRepository.save(toDoEntity);
         return toDoMapper.toResponseDTO(savedEntity);
+    }
+
+    @Override
+    public List<ToDoResponseDTO> getAllToDos() {
+        List<ToDoEntity> toDoEntities = toDoRepository.findAll();
+        return toDoMapper.toResponseDTOList(toDoEntities);
     }
 }
