@@ -22,11 +22,26 @@ public class ToDoController {
         return ResponseEntity.status(201).body(createdToDo);
     }
 
-@GetMapping(path = "/get-all-todos")
-    public ResponseEntity<List<ToDoResponseDTO>> getAllToDos(){
+    @GetMapping(path = "/get-all-todos")
+    public ResponseEntity<List<ToDoResponseDTO>> getAllToDos() {
         List<ToDoResponseDTO> toDos = toDoService.getAllToDos();
         return ResponseEntity.ok(toDos);
 
-}
+    }
+
+    @GetMapping(path = "/get-by-id/{id}")
+    public ResponseEntity<ToDoResponseDTO> getToDoByID(@PathVariable(value = "id") Long id){
+        ToDoResponseDTO toDoResponse = toDoService.getToDoByID(id);
+        return ResponseEntity.ok(toDoResponse);
+    }
+
+    @PutMapping(
+          path = "/update/{id}"
+    )
+    public ResponseEntity<ToDoResponseDTO> updateToDo(@PathVariable(value = "id") Long id, @RequestBody ToDoRequestDTO toDoRequestDTO){
+        ToDoResponseDTO updateToDo = toDoService.updateToDo(id,toDoRequestDTO);
+        return ResponseEntity.ok(updateToDo);
+    }
+
 
 }
