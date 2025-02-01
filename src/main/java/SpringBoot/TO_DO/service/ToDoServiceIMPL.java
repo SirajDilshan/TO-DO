@@ -7,7 +7,6 @@ import SpringBoot.TO_DO.exception.ResourceNotFoundException;
 import SpringBoot.TO_DO.mapper.ToDoMapper;
 import SpringBoot.TO_DO.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,9 +18,9 @@ public class ToDoServiceIMPL implements ToDoService {
     @Autowired
     private ToDoRepository toDoRepository;
 
-    public ToDoResponseDTO createToDo(ToDoRequestDTO toDoRequestDTO){
+    public ToDoResponseDTO createToDo(ToDoRequestDTO toDoRequestDTO) {
         ToDoEntity toDoEntity = toDoMapper.toEntity(toDoRequestDTO);
-        ToDoEntity savedEntity= toDoRepository.save(toDoEntity);
+        ToDoEntity savedEntity = toDoRepository.save(toDoEntity);
         return toDoMapper.toResponseDTO(savedEntity);
     }
 
@@ -33,7 +32,7 @@ public class ToDoServiceIMPL implements ToDoService {
 
     @Override
     public ToDoResponseDTO getToDoByID(Long id) {
-        ToDoEntity toDoEntity = toDoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("To-Do not found with id: " + id) );
+        ToDoEntity toDoEntity = toDoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("To-Do not found with id: " + id));
         return toDoMapper.toResponseDTO(toDoEntity);
     }
 
@@ -50,7 +49,7 @@ public class ToDoServiceIMPL implements ToDoService {
     @Override
     public void deleteToDo(Long id) {
         ToDoEntity toDoEntity = toDoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("To-Do not found with id: " + id));
-toDoRepository.delete(toDoEntity);
+        toDoRepository.delete(toDoEntity);
 
     }
 }
