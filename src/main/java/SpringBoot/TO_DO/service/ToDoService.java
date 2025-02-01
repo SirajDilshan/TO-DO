@@ -13,4 +13,6 @@ public interface ToDoService {
     ToDoResponseDTO getToDoByID(Long id);
 
     ToDoResponseDTO updateToDo(Long id, ToDoRequestDTO toDoRequestDTO);
+
+    void deleteToDo(Long id);
 }

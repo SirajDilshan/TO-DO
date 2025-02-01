@@ -46,4 +46,11 @@ public class ToDoServiceIMPL implements ToDoService {
         ToDoEntity updatedDTO = toDoRepository.save(toDoEntity);
         return toDoMapper.toResponseDTO(updatedDTO);
     }
+
+    @Override
+    public void deleteToDo(Long id) {
+        ToDoEntity toDoEntity = toDoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("To-Do not found with id: " + id));
+toDoRepository.delete(toDoEntity);
+
+    }
 }

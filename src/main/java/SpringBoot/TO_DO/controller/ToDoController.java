@@ -43,5 +43,11 @@ public class ToDoController {
         return ResponseEntity.ok(updateToDo);
     }
 
+    @DeleteMapping(path = "/delete-todo/{id}")
+    public ResponseEntity<String> deleteToDo(@PathVariable(value = "id") Long id){
+        toDoService.deleteToDo(id);
+        return ResponseEntity.ok("To-Do Deleted Successfull");
+    }
+
 
 }
